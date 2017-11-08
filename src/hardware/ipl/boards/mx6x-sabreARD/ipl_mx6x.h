@@ -44,7 +44,7 @@
 	(((l) & 0xFF000000) >> 24))
 
 
-#define MXC_CONSOLE_BASE       MX6X_UART4_BASE
+#define MXC_CONSOLE_BASE       MX6X_UART1_BASE
 
 /* UART registers, offset from base address */
 #define MXC_UART_RXDATA        *(volatile unsigned short *) (MXC_CONSOLE_BASE + 0x00)     /* Receiver Register */

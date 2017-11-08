@@ -999,8 +999,8 @@ void mx6sdl_init_video(void)
 	pinmux_set_swmux(SWMUX_SDL_CSI0_DAT7, MUX_CTL_MUX_MODE_ALT0);
 	pinmux_set_swmux(SWMUX_SDL_CSI0_DAT8, MUX_CTL_MUX_MODE_ALT0);
 	pinmux_set_swmux(SWMUX_SDL_CSI0_DAT9, MUX_CTL_MUX_MODE_ALT0);
-	pinmux_set_swmux(SWMUX_SDL_CSI0_DAT10, MUX_CTL_MUX_MODE_ALT0);
-	pinmux_set_swmux(SWMUX_SDL_CSI0_DAT11, MUX_CTL_MUX_MODE_ALT0);
+	//pinmux_set_swmux(SWMUX_SDL_CSI0_DAT10, MUX_CTL_MUX_MODE_ALT0);
+	//pinmux_set_swmux(SWMUX_SDL_CSI0_DAT11, MUX_CTL_MUX_MODE_ALT0);
 	pinmux_set_swmux(SWMUX_SDL_CSI0_DAT12, MUX_CTL_MUX_MODE_ALT0);
 	pinmux_set_swmux(SWMUX_SDL_CSI0_DAT13, MUX_CTL_MUX_MODE_ALT0);
 	pinmux_set_swmux(SWMUX_SDL_CSI0_DAT14, MUX_CTL_MUX_MODE_ALT0);
