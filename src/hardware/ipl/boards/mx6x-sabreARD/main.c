@@ -111,7 +111,7 @@ sdmmc_load_file (unsigned address, const char *fn)
 	/*
 	 * Initialize the SDMMC interface
 	 */
-	sdmmc.sdmmc_pbase = MX6X_USDHC3_BASE;      // SDMMC base address
+	sdmmc.sdmmc_pbase = MX6X_USDHC4_BASE;      // SDMMC base address
 
 	/* initialize the sdmmc interface and card */
 	if (SDMMC_OK != sdmmc_init_ctrl(&sdmmc)) {

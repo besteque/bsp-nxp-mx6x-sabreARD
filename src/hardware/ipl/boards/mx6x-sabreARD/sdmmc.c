@@ -518,9 +518,9 @@ mmc_switch_mode(mx6x_sdmmc_t *sdmmc)
     // We know the chip is in 8 bit mode and support high speed (52MHz)
 
     // switch to 8 bit mode
-    CMD_CREATE (sdmmc->cmd, MMC_SWITCH, (3 << 24) | (183 << 16) | (2 << 8), 0, 0, 0, 0);
+    CMD_CREATE (sdmmc->cmd, MMC_SWITCH, (3 << 24) | (183 << 16) | (1 << 8), 0, 0, 0, 0);
     if (SDMMC_OK == sdmmc_send_cmd(sdmmc))
-        sd_set_bus_width (sdmmc, 8);
+        sd_set_bus_width (sdmmc, 4);
     else
         return -1;
 
