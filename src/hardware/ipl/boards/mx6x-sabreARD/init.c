@@ -424,110 +424,6 @@ void init_pinmux_dual_lite_solo()
      * USDHC interfaces
      */
 
-	/***********
-	 * SD1
-	 ***********/
-
-	/* SD1 CLK */
-	set_mux_cfg(SWMUX_SDL_SD1_CLK, MUX_CTL_MUX_MODE_ALT0);
-	set_pad_cfg(SWPAD_SDL_SD1_CLK, MX6Q_PAD_SETTINGS_USDHC);
-
-	/* SD1 CMD */
-	set_mux_cfg(SWMUX_SDL_SD1_CMD, MUX_CTL_MUX_MODE_ALT0 | MUX_CTL_SION);
-	set_pad_cfg(SWPAD_SDL_SD1_CMD, MX6Q_PAD_SETTINGS_USDHC);
-
-	/* SD1 DAT0 */
-	set_mux_cfg(SWMUX_SDL_SD1_DAT0, MUX_CTL_MUX_MODE_ALT0);
-	set_pad_cfg(SWPAD_SDL_SD1_DAT0, MX6Q_PAD_SETTINGS_USDHC);
-
-	/* SD1 DAT1 */
-	set_mux_cfg(SWMUX_SDL_SD1_DAT1, MUX_CTL_MUX_MODE_ALT0);
-	set_pad_cfg(SWPAD_SDL_SD1_DAT1, MX6Q_PAD_SETTINGS_USDHC);
-
-	/* SD1 DAT2 */
-	set_mux_cfg(SWMUX_SDL_SD1_DAT2, MUX_CTL_MUX_MODE_ALT0);
-	set_pad_cfg(SWPAD_SDL_SD1_DAT2, MX6Q_PAD_SETTINGS_USDHC);
-
-	/* SD1 DAT3 */
-	set_mux_cfg(SWMUX_SDL_SD1_DAT3, MUX_CTL_MUX_MODE_ALT0);
-	set_pad_cfg(SWPAD_SDL_SD1_DAT3, MX6Q_PAD_SETTINGS_USDHC);
-
-	/*
-	 * SD1 Card Detect - configure GPIO1[1] as an input
-	 * Note: changed default pad settings to settings appropriate to a switch
-	 */
-	set_mux_cfg(SWMUX_SDL_GPIO_1, MUX_CTL_MUX_MODE_ALT5);
-	set_pad_cfg(SWPAD_SDL_GPIO_1, MX6Q_PAD_SETTINGS_GPI_SWITCH);
-	out32(MX6X_GPIO1_BASE + MX6X_GPIO_GDIR, in32(MX6X_GPIO1_BASE + MX6X_GPIO_GDIR) & ~(1<<1));
-
-	/*
-	 * SD1 Write Protect - configure GPIO5[20] as an input
-	 * Note: default pad settings
-	 */
-	set_mux_cfg(SWMUX_SDL_CSI0_DATA_EN, MUX_CTL_MUX_MODE_ALT5);
-	set_pad_cfg(SWPAD_SDL_CSI0_DATA_EN, MX6Q_PAD_SETTINGS_GPI_SWITCH);
-	out32(MX6X_GPIO5_BASE + MX6X_GPIO_GDIR, in32(MX6X_GPIO5_BASE + MX6X_GPIO_GDIR) & ~(1<<20));
-
-	/***********
-	 * SD3
-	 ***********/
-
-	/* SD3 CLK */
-	set_mux_cfg(SWMUX_SDL_SD3_CLK, MUX_CTL_MUX_MODE_ALT0);
-	set_pad_cfg(SWPAD_SDL_SD3_CLK, MX6Q_PAD_SETTINGS_USDHC);
-
-	/* SD3 CMD */
-	set_mux_cfg(SWMUX_SDL_SD3_CMD, MUX_CTL_MUX_MODE_ALT0 | MUX_CTL_SION);
-	set_pad_cfg(SWPAD_SDL_SD3_CMD, MX6Q_PAD_SETTINGS_USDHC);
-
-	/* SD3 DAT0 */
-	set_mux_cfg(SWMUX_SDL_SD3_DAT0, MUX_CTL_MUX_MODE_ALT0);
-	set_pad_cfg(SWPAD_SDL_SD3_DAT0, MX6Q_PAD_SETTINGS_USDHC);
-
-	/* SD3 DAT1 */
-	set_mux_cfg(SWMUX_SDL_SD3_DAT1, MUX_CTL_MUX_MODE_ALT0);
-	set_pad_cfg(SWPAD_SDL_SD3_DAT1, MX6Q_PAD_SETTINGS_USDHC);
-
-	/* SD3 DAT2 */
-	set_mux_cfg(SWMUX_SDL_SD3_DAT2, MUX_CTL_MUX_MODE_ALT0);
-	set_pad_cfg(SWPAD_SDL_SD3_DAT2, MX6Q_PAD_SETTINGS_USDHC);
-
-	/* SD3 DAT3 */
-	set_mux_cfg(SWMUX_SDL_SD3_DAT3, MUX_CTL_MUX_MODE_ALT0);
-	set_pad_cfg(SWPAD_SDL_SD3_DAT3, MX6Q_PAD_SETTINGS_USDHC);
-
-	/* SD3 DAT4 */
-	set_mux_cfg(SWMUX_SDL_SD3_DAT4, MUX_CTL_MUX_MODE_ALT0);
-	set_pad_cfg(SWPAD_SDL_SD3_DAT4, MX6Q_PAD_SETTINGS_USDHC);
-
-	/* SD3 DAT5 */
-	set_mux_cfg(SWMUX_SDL_SD3_DAT5, MUX_CTL_MUX_MODE_ALT0);
-	set_pad_cfg(SWPAD_SDL_SD3_DAT5, MX6Q_PAD_SETTINGS_USDHC);
-
-	/* SD3 DAT6 */
-	set_mux_cfg(SWMUX_SDL_SD3_DAT6, MUX_CTL_MUX_MODE_ALT0);
-	set_pad_cfg(SWPAD_SDL_SD3_DAT6, MX6Q_PAD_SETTINGS_USDHC);
-
-	/* SD3 DAT7 */
-	set_mux_cfg(SWMUX_SDL_SD3_DAT7, MUX_CTL_MUX_MODE_ALT0);
-	set_pad_cfg(SWPAD_SDL_SD3_DAT7, MX6Q_PAD_SETTINGS_USDHC);
-
-	/*
-	 * SD3 Write Protect - configure GPIO1[13] as an input
-	 * Note: changed default pad settings to settings appropriate to a switch
-	 */
-	set_mux_cfg(SWMUX_SDL_SD2_DAT2, MUX_CTL_MUX_MODE_ALT5);
-	set_pad_cfg(SWPAD_SDL_SD2_DAT2, MX6Q_PAD_SETTINGS_GPI_SWITCH);
-	out32(MX6X_GPIO1_BASE + MX6X_GPIO_GDIR, in32(MX6X_GPIO1_BASE + MX6X_GPIO_GDIR) & ~(1<<13));
-
-	/*
-	 * SD3 Card Detect - configure GPIO6[15] as an input
-	 * Note: changed default pad settings to settings appropriate to a switch
-	 */
-	set_mux_cfg(SWMUX_SDL_NANDF_CS2, MUX_CTL_MUX_MODE_ALT5);
-	set_pad_cfg(SWPAD_SDL_NANDF_CS2, MX6Q_PAD_SETTINGS_GPI_SWITCH);
-	out32(MX6X_GPIO6_BASE + MX6X_GPIO_GDIR, in32(MX6X_GPIO6_BASE + MX6X_GPIO_GDIR) & ~(1<<15));
-
 
 	/***********
 	 * SD4 -emmc
@@ -555,6 +451,22 @@ void init_pinmux_dual_lite_solo()
 	/* SD4 DAT3 */
 	set_mux_cfg(SWMUX_SDL_SD4_DAT3, MUX_CTL_MUX_MODE_ALT1);
 	set_pad_cfg(SWPAD_SDL_SD4_DAT3, MX6Q_PAD_SETTINGS_USDHC);
+
+	/* SD4 DAT4 */
+	set_mux_cfg(SWMUX_SDL_SD4_DAT4, MUX_CTL_MUX_MODE_ALT1);
+	set_pad_cfg(SWPAD_SDL_SD4_DAT4, MX6Q_PAD_SETTINGS_USDHC);
+
+	/* SD4 DAT5 */
+	set_mux_cfg(SWMUX_SDL_SD4_DAT5, MUX_CTL_MUX_MODE_ALT1);
+	set_pad_cfg(SWPAD_SDL_SD4_DAT5, MX6Q_PAD_SETTINGS_USDHC);
+
+	/* SD4 DAT6 */
+	set_mux_cfg(SWMUX_SDL_SD4_DAT6, MUX_CTL_MUX_MODE_ALT1);
+	set_pad_cfg(SWPAD_SDL_SD4_DAT6, MX6Q_PAD_SETTINGS_USDHC);
+
+	/* SD4 DAT7 */
+	set_mux_cfg(SWMUX_SDL_SD4_DAT7, MUX_CTL_MUX_MODE_ALT1);
+	set_pad_cfg(SWPAD_SDL_SD4_DAT7, MX6Q_PAD_SETTINGS_USDHC);
 
 	/*
 	* SPI
