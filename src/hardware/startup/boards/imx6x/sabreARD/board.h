@@ -49,6 +49,7 @@ extern void mx6q_init_can(void);
 extern void mx6sdl_init_can(void);
 extern void mx6q_init_enet(void);
 extern void mx6sdl_init_enet(void);
+extern void mx6sdl_init_uart_1(void);
 extern void mx6q_init_uart_2(void);
 extern void mx6sdl_init_uart_2(void);
 extern void mx6q_init_uart_3(void);

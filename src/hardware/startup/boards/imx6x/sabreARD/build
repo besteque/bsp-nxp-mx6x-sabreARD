@@ -127,7 +127,7 @@
     ## UART drivers
     ## UART 4 (started above) is connected to the USB->RS232 bridge
     #######################################################################
-    devc-sermx1 -e -F -S -c80000000 0x021F0000,61
+    devc-sermx1 -e -F -S -c80000000 0x02020000,58
     waitfor /dev/ser1 4
     reopen /dev/ser1
     display_msg " "

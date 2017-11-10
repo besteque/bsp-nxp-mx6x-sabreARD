@@ -66,41 +66,30 @@ void mx6q_init_i2c2(void)
 void mx6sdl_init_i2c2(void)
 {
 	/* I2C2  SCL */
-	pinmux_set_swmux(SWMUX_SDL_EIM_EB2, MUX_CTL_MUX_MODE_ALT6 | MUX_CTL_SION);
-	pinmux_set_padcfg(SWPAD_SDL_EIM_EB2, MX6X_PAD_SETTINGS_I2C);
-	pinmux_set_input(SWINPUT_SDL_I2C2_IPP_SCL_IN, 0x0);
+	pinmux_set_swmux(SWMUX_SDL_CSI0_DAT9, MUX_CTL_MUX_MODE_ALT6 | MUX_CTL_SION);
+	pinmux_set_padcfg(SWPAD_SDL_CSI0_DAT9, MX6X_PAD_SETTINGS_I2C);
+	//pinmux_set_input(SWINPUT_SDL_I2C2_IPP_SCL_IN, 0x0);
 
 	/* I2C2  SDA */
-	pinmux_set_swmux(SWMUX_SDL_KEY_ROW3, MUX_CTL_MUX_MODE_ALT4 | MUX_CTL_SION);
-	pinmux_set_padcfg(SWPAD_SDL_KEY_ROW3, MX6X_PAD_SETTINGS_I2C);
-	pinmux_set_input(SWINPUT_SDL_I2C2_IPP_SDA_IN, 0x1);
-}
-
-void mx6q_init_i2c3(void)
-{
-	/* I2C3 SCL */
-	pinmux_set_swmux(SWMUX_GPIO_3, MUX_CTL_MUX_MODE_ALT2 | MUX_CTL_SION);
-	pinmux_set_padcfg(SWPAD_GPIO_3, MX6X_PAD_SETTINGS_I2C);
-	pinmux_set_input(SWINPUT_I2C3_IPP_SCL_IN, 1);
-
-	/* I2C3  SDA */
-	pinmux_set_swmux(SWMUX_EIM_D18, MUX_CTL_MUX_MODE_ALT6 | MUX_CTL_SION);
-	pinmux_set_padcfg(SWPAD_EIM_D18, MX6X_PAD_SETTINGS_I2C);
-	pinmux_set_input(SWINPUT_I2C3_IPP_SDA_IN, 0);
-
-	/* EIM_A24__GPIO_5_4 steer logic enable */
-	pinmux_set_swmux(SWMUX_EIM_A24, MUX_CTL_MUX_MODE_ALT5);
-	out32(MX6X_GPIO5_BASE + MX6X_GPIO_GDIR, in32(MX6X_GPIO5_BASE + MX6X_GPIO_GDIR) | (1<<4)); /* set as an output */
-	out32(MX6X_GPIO5_BASE + MX6X_GPIO_DR, in32(MX6X_GPIO5_BASE + MX6X_GPIO_DR) | (1<<4));  /* Enable I2C3 SDA route path */
-
-	/* GPIO1[15] */
-	pinmux_set_swmux(SWMUX_SD2_DAT0, MUX_CTL_MUX_MODE_ALT5);
-	out32(MX6X_GPIO1_BASE + MX6X_GPIO_GDIR, in32(MX6X_GPIO1_BASE + MX6X_GPIO_GDIR) | (1<<15)); //set as an output
-	out32(MX6X_GPIO1_BASE + MX6X_GPIO_DR, in32(MX6X_GPIO1_BASE + MX6X_GPIO_DR) & ~(1<<15)); // low
-	out32(MX6X_GPIO1_BASE + MX6X_GPIO_DR, in32(MX6X_GPIO1_BASE + MX6X_GPIO_DR) | (1<<15)); // high
+	pinmux_set_swmux(SWMUX_SDL_CSI0_DAT8, MUX_CTL_MUX_MODE_ALT0 | MUX_CTL_SION);
+	pinmux_set_padcfg(SWPAD_SDL_CSI0_DAT8, MX6X_PAD_SETTINGS_I2C);
+	//pinmux_set_input(SWINPUT_SDL_I2C2_IPP_SDA_IN, 0x1);
 }
 
 void mx6sdl_init_i2c3(void)
+{
+	/* I2C3 SCL */
+	pinmux_set_swmux(SWMUX_SDL_KEY_COL3, MUX_CTL_MUX_MODE_ALT3 | MUX_CTL_SION);
+	pinmux_set_padcfg(SWPAD_SDL_KEY_COL3, MX6X_PAD_SETTINGS_I2C);
+	//pinmux_set_input(SWINPUT_I2C3_IPP_SCL_IN, 1);
+
+	/* I2C3  SDA */
+	pinmux_set_swmux(SWMUX_SDL_KEY_ROW3, MUX_CTL_MUX_MODE_ALT3 | MUX_CTL_SION);
+	pinmux_set_padcfg(SWPAD_SDL_KEY_ROW3, MX6X_PAD_SETTINGS_I2C);
+	//pinmux_set_input(SWINPUT_I2C3_IPP_SDA_IN, 0);
+}
+
+void mx6q_init_i2c3(void)
 {
 	/* I2C3 SCL */
 	pinmux_set_swmux(SWMUX_SDL_GPIO_3, MUX_CTL_MUX_MODE_ALT2 | MUX_CTL_SION);
@@ -645,6 +634,21 @@ void mx6sdl_init_esai(void)
 	pinmux_set_swmux(SWMUX_SDL_SD2_CLK, MUX_CTL_MUX_MODE_ALT5); //GPIO_1_10
 }
 
+
+void mx6sdl_init_uart_1(void)
+{
+	/* UART1 TX - pin CSI0_DAT10*/
+	pinmux_set_swmux(SWMUX_SDL_CSI0_DAT10, MUX_CTL_MUX_MODE_ALT3);
+	pinmux_set_padcfg(SWPAD_SDL_CSI0_DAT10, MX6X_PAD_SETTINGS_UART);
+	pinmux_set_input(SWINPUT_SDL_UART1_IPP_UART_RXD_MUX, 0x00);
+
+	/* UART1 RX - pin CSI0_DAT11 */
+	pinmux_set_swmux(SWMUX_SDL_CSI0_DAT11, MUX_CTL_MUX_MODE_ALT3);
+	pinmux_set_padcfg(SWPAD_SDL_CSI0_DAT11, MX6X_PAD_SETTINGS_UART);
+	pinmux_set_input(SWINPUT_SDL_UART1_IPP_UART_RXD_MUX, 0x01);
+
+}
+
 void mx6q_init_uart_2(void)
 {
 	/* TXD output */
@@ -997,8 +1001,8 @@ void mx6sdl_init_video(void)
 	pinmux_set_swmux(SWMUX_SDL_CSI0_DAT5, MUX_CTL_MUX_MODE_ALT0);
 	pinmux_set_swmux(SWMUX_SDL_CSI0_DAT6, MUX_CTL_MUX_MODE_ALT0);
 	pinmux_set_swmux(SWMUX_SDL_CSI0_DAT7, MUX_CTL_MUX_MODE_ALT0);
-	pinmux_set_swmux(SWMUX_SDL_CSI0_DAT8, MUX_CTL_MUX_MODE_ALT0);
-	pinmux_set_swmux(SWMUX_SDL_CSI0_DAT9, MUX_CTL_MUX_MODE_ALT0);
+	//pinmux_set_swmux(SWMUX_SDL_CSI0_DAT8, MUX_CTL_MUX_MODE_ALT0);
+	//pinmux_set_swmux(SWMUX_SDL_CSI0_DAT9, MUX_CTL_MUX_MODE_ALT0);
 	//pinmux_set_swmux(SWMUX_SDL_CSI0_DAT10, MUX_CTL_MUX_MODE_ALT0);
 	//pinmux_set_swmux(SWMUX_SDL_CSI0_DAT11, MUX_CTL_MUX_MODE_ALT0);
 	pinmux_set_swmux(SWMUX_SDL_CSI0_DAT12, MUX_CTL_MUX_MODE_ALT0);

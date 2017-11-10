@@ -52,7 +52,7 @@ const struct callout_slot callouts[] = {
 
 const struct debug_device debug_devices[] = {
 	{ 	"mx1",
-		{"0x021F0000^0.115200.80000000.16",
+		{"0x02020000^0.115200.80000000.16",
 		},
 		init_mx1,
 		put_mx1,
@@ -273,6 +273,9 @@ main(int argc, char **argv, char **envv)
 	/* AIPSTZ init */
 	mx6x_init_aipstz();
 
+	/* init serial port pin, ref:UART memory map */
+	mx6sdl_init_uart_1();
+
 
 	if ( imx6_quad_dual )
 	{
@@ -403,8 +406,8 @@ main(int argc, char **argv, char **envv)
 		/* init PMIC */
 		mx6sdl_init_pmic();
 
-		/* init UART 2 */
-		mx6sdl_init_uart_2();
+		/* init UART 1, in advance */
+
 
 		/* Configure PIN MUX to enable SD */
 		mx6sdl_init_usdhc();
